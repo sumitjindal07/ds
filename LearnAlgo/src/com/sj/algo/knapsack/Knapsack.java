@@ -10,7 +10,7 @@ public class Knapsack {
 	
 	public static void main(String[] args) {
 		
-		boolean done = knapsack(7, 0);
+		boolean done = knapsack(37, 0);
 		System.out.println(done?res:"No valid comb");
 		
 	}
@@ -28,15 +28,8 @@ public class Knapsack {
 			if(done){
 				res.add(wts[index]);
 				return true;
-			}else{
-				/*for(int i=index+1; i<wts.length; i++){
-					return knapsack(req, i);
-				}
-				return false;*/
-				return knapsack(req, index+1);
 			}
-		}else{
-			return knapsack(req, index+1);
 		}
+		return knapsack(req, index+1);
 	}
 }
