@@ -14,6 +14,8 @@ public class SortFactory {
 				return new InsertionSort<T>(eu, comp);
 			case MERGE:
 				return new MergeSort<T>(eu, comp);
+			case SHELL:
+				return new ShellSort<T>(eu, comp);
 			default:
 				return null;
 		}

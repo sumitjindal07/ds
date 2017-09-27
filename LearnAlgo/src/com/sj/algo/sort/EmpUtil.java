@@ -24,7 +24,7 @@ public class EmpUtil {
 		System.out.println("Before sorting:");
 		displayEmps(eu);
 		
-		sortEmps(eu, SortStrategy.MERGE);
+		sortEmps(eu, SortStrategy.SHELL);
 		
 		System.out.println("After sorting:");
 		displayEmps(eu);
