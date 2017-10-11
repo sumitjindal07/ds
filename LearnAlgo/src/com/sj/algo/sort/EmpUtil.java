@@ -17,14 +17,14 @@ public class EmpUtil {
 	public static void main(String[] args) {
 		EmpUtil eu = new EmpUtil();
 		
-		eu.setEmps(new Emp[40]);
+		eu.setEmps(new Emp[50]);
 		
 		fillEmps(eu);
 		
 		System.out.println("Before sorting:");
 		displayEmps(eu);
 		
-		sortEmps(eu, SortStrategy.SHELL);
+		sortEmps(eu, SortStrategy.QUICK);
 		
 		System.out.println("After sorting:");
 		displayEmps(eu);
