@@ -2,7 +2,7 @@ package com.sj.algo.knapsack;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//test
 public class Knapsack {
 
 	static int[] wts = {11, 8, 7, 6 , 5};
