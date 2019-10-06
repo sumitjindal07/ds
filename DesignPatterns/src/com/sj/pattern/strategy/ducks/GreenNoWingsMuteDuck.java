@@ -7,14 +7,13 @@ public class GreenNoWingsMuteDuck extends AbstractDuck {
 
 	public GreenNoWingsMuteDuck() {
 		super("GreenNoWingsMuteDuck");
-		setFly(new FlyNoWay());
-		setQuack(new QuackMute());
+		setFly(FlyNoWay.getInstance());
+		setQuack(QuackMute.getInstance());
 	}
 	
 	@Override
 	public void display() {
 		System.out.println("Displaying Green Not Flying Mute duck");
-
 	}
 
 }

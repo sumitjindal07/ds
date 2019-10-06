@@ -7,14 +7,13 @@ public class RedNoWingsSqueekDuck extends AbstractDuck {
 
 	public RedNoWingsSqueekDuck() {
 		super("RedNoWingsSqueekDuck");
-		setFly(new FlyNoWay());
-		setQuack(new QuackSqueek());
+		setFly(FlyNoWay.getInstance());
+		setQuack(QuackSqueek.getInstance());
 	}
 	
 	@Override
 	public void display() {
 		System.out.println("Displaying Red Not Flying Squeek duck");
-
 	}
 
 }
