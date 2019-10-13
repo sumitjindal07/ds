@@ -17,13 +17,10 @@ public class CricketMatchLive {
 	private List<String> playerNames;
 	
 	public static void main(String[] args) {
-		
-		
 		CricketMatchLive liveMatch = new CricketMatchLive();
 		liveMatch.init();
 		liveMatch.start();
 		liveMatch.end();
-
 	}
 
 	private void end() {
