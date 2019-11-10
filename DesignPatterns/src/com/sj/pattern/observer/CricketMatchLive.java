@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.sj.pattern.observer.publisher.CricketScoreFeed;
+import com.sj.pattern.observer.subscriber.BreakChecker;
 import com.sj.pattern.observer.subscriber.CommentaryUpdate;
 import com.sj.pattern.observer.subscriber.CricketScoreCard;
 
@@ -85,6 +86,7 @@ public class CricketMatchLive {
 		scoreFeed = new CricketScoreFeed();
 		scoreCard = new CricketScoreCard(scoreFeed, playerNames);
 		CommentaryUpdate.start(scoreFeed);
+		BreakChecker.start(scoreFeed);
 	}
 
 }
