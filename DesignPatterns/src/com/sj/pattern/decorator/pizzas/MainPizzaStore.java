@@ -8,6 +8,8 @@ public class MainPizzaStore {
 		
 		createPizza(new NYStylePizza(new CheesePizza()));
 		
+		createPizza(new IndiaStylePizza(new ClassicPizza()));
+		
 	}
 
 	private static void createPizza(IPizza pizza) {

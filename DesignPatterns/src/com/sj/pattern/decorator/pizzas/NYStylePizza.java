@@ -1,10 +1,26 @@
 package com.sj.pattern.decorator.pizzas;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class NYStylePizza extends DecoratorPizza {
 	private IPizza pizza;
 	
+	private List<String> toppings = null;
+	
 	public NYStylePizza(IPizza pizza) {
 		this.pizza = pizza;
+		initToppings(pizza.getToppings());
+	}
+
+	private void initToppings(List<String> toppings) {
+		if(toppings==null || toppings.isEmpty())
+			return;
+		
+		this.toppings = new ArrayList<>(toppings.size());
+		for(String topping:toppings) {
+			this.toppings.add("NY style "+topping);
+		}
 	}
 
 	@Override
@@ -37,4 +53,18 @@ public class NYStylePizza extends DecoratorPizza {
 		return "NY style " + pizza.name();
 	}
 
+	@Override
+	public List<String> getToppings() {
+		return toppings;
+	}
+
+	@Override
+	public String dough() {
+		return "Thin crust dough";
+	}
+
+	@Override
+	public String sauce() {
+		return "Marinara Sauce";
+	}
 }
