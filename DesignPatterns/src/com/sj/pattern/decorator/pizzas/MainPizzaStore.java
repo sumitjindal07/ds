@@ -10,6 +10,10 @@ public class MainPizzaStore {
 		
 		createPizza(new IndiaStylePizza(new ClassicPizza()));
 		
+		createPizza(new LNStylePizza(new CheesePizza()));
+		
+		createPizza(new LNStylePizza(new NYStylePizza(new CheesePizza())));
+		
 	}
 
 	private static void createPizza(Pizza pizza) {
