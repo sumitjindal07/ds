@@ -41,4 +41,12 @@ public abstract class Pizza {
 			}
 		}
 	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public int getCost() {
+		return cost;
+	}
 }
