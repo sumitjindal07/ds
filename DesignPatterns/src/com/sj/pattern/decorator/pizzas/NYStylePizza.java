@@ -4,30 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NYStylePizza extends DecoratorPizza {
-	private IPizza pizza;
 	
-	private List<String> toppings = null;
-	
-	public NYStylePizza(IPizza pizza) {
-		this.pizza = pizza;
-		initToppings(pizza.getToppings());
-	}
-
-	private void initToppings(List<String> toppings) {
-		if(toppings==null || toppings.isEmpty())
-			return;
-		
-		this.toppings = new ArrayList<>(toppings.size());
-		for(String topping:toppings) {
-			this.toppings.add("NY style "+topping);
-		}
+	public NYStylePizza(Pizza pizza) {
+		super(pizza);
 	}
 
 	@Override
-	public int cost() {
-		return pizza.cost() + 10;
+	protected void setCost(int cost) {
+		this.cost = cost + 10;
 	}
-
+	
 	@Override
 	public void bake() {
 		pizza.bake();
@@ -44,27 +30,29 @@ public class NYStylePizza extends DecoratorPizza {
 	}
 
 	@Override
-	public String description() {
-		return ("This is a "+name()+" pizza.");
+	public void setName(String name) {
+		this.name = "NY style " + name;
 	}
 
 	@Override
-	public String name() {
-		return "NY style " + pizza.name();
+	public void setDough(String dough) {
+		this.dough = "Thin crust dough";
 	}
 
 	@Override
-	public List<String> getToppings() {
-		return toppings;
+	public void setSauce(String sauce) {
+		this.sauce = "Marinara Sauce";
 	}
 
 	@Override
-	public String dough() {
-		return "Thin crust dough";
-	}
+	public void setToppings(List<String> toppings) {
 
-	@Override
-	public String sauce() {
-		return "Marinara Sauce";
+		if(toppings==null || toppings.isEmpty())
+			return;
+		
+		this.toppings = new ArrayList<>(toppings.size());
+		for(String topping:toppings) {
+			this.toppings.add("NY style "+topping);
+		}
 	}
 }

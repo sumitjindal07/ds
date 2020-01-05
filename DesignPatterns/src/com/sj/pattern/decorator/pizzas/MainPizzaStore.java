@@ -12,11 +12,11 @@ public class MainPizzaStore {
 		
 	}
 
-	private static void createPizza(IPizza pizza) {
-		System.out.println(pizza.name() +" - "+ pizza.description());
+	private static void createPizza(Pizza pizza) {
+		System.out.println(pizza.name +" - "+ pizza.description);
 		pizza.bake();
 		pizza.cut();
 		pizza.box();
-		System.out.println(pizza.name() +" - "+ pizza.cost());
+		System.out.println(pizza.name +" - "+ pizza.cost);
 	}
 }

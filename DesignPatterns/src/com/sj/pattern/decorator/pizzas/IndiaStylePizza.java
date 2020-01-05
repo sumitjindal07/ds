@@ -4,28 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IndiaStylePizza extends DecoratorPizza {
-	private IPizza pizza;
-	
-	private List<String> toppings = null;
-	
-	public IndiaStylePizza(IPizza pizza) {
-		this.pizza = pizza;
-		initToppings(pizza.getToppings());
-	}
 
-	private void initToppings(List<String> toppings) {
-		if(toppings==null || toppings.isEmpty())
-			return;
-		
-		this.toppings = new ArrayList<>(toppings.size());
-		for(String topping:toppings) {
-			this.toppings.add("Indian style "+topping);
-		}
+	public IndiaStylePizza(Pizza pizza) {
+		super(pizza);
 	}
 
 	@Override
-	public int cost() {
-		return pizza.cost() + 5;
+	protected void setCost(int cost) {
+		this.cost = cost + 5;
 	}
 
 	@Override
@@ -44,27 +30,29 @@ public class IndiaStylePizza extends DecoratorPizza {
 	}
 
 	@Override
-	public String description() {
-		return ("This is a "+name()+" pizza.");
+	public void setName(String name) {
+		this.name = "Indian style " + name;
 	}
 
 	@Override
-	public String name() {
-		return "Indian style " + pizza.name();
+	public void setDough(String dough) {
+		this.dough = "Thick crust dough";
 	}
 
 	@Override
-	public List<String> getToppings() {
-		return toppings;
+	public void setSauce(String sauce) {
+		this.sauce = "Kissan tomato Sauce";
 	}
-
+	
 	@Override
-	public String dough() {
-		return "Thick crust dough";
-	}
+	public void setToppings(List<String> toppings) {
 
-	@Override
-	public String sauce() {
-		return "Kissan tomato Sauce";
+		if(toppings==null || toppings.isEmpty())
+			return;
+		
+		this.toppings = new ArrayList<>(toppings.size());
+		for(String topping:toppings) {
+			this.toppings.add("Indian style "+topping);
+		}
 	}
 }

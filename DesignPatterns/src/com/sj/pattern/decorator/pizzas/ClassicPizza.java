@@ -1,17 +1,12 @@
 package com.sj.pattern.decorator.pizzas;
 
-public class ClassicPizza implements IPizza {
+public class ClassicPizza extends Pizza {
 
-	@Override
-	public int cost() {
-		return 1;
+	public ClassicPizza() {
+		setCost(1);
+		name = "Classic Pizza";
 	}
-
-	@Override
-	public String name() {
-		return "Classic";
-	}
-
+	
 	@Override
 	public void bake() {
 		System.out.println("Baked for 10 mins");
@@ -26,5 +21,4 @@ public class ClassicPizza implements IPizza {
 	public void box() {
 		System.out.println("Boxed in Pizza Box");
 	}
-
 }
