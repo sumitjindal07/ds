@@ -1,11 +1,25 @@
 package com.sj.pattern.decorator.pizzas;
 
-public class CheesePizza extends Pizza {
+import java.util.Arrays;
 
+import com.sj.pattern.factory.pizzas.ingredients.Cheese;
+import com.sj.pattern.factory.pizzas.ingredients.Dough;
+import com.sj.pattern.factory.pizzas.ingredients.PizzaIngredientFactory;
+
+public class CheesePizza extends Pizza {
+	
 	public CheesePizza() {
-		toppings.add("Cheese");
 		setCost(2);
 		name = "Cheese Pizza";
+		dough = Dough.PizzaDough;
+		cheese = Cheese.PizzaCheese;
+	}
+
+	PizzaIngredientFactory ingredientFactory;
+	
+	public CheesePizza(PizzaIngredientFactory ingredientFactory) {
+		this();
+		this.ingredientFactory = ingredientFactory;
 	}
 	
 	@Override
@@ -21,5 +35,15 @@ public class CheesePizza extends Pizza {
 	@Override
 	public void box() {
 		System.out.println("Boxed in Pizza Box");
+	}
+
+	@Override
+	protected void prepareIngredients() {
+		if(ingredientFactory!=null) {
+			dough = ingredientFactory.createDough();
+			sauce = ingredientFactory.createSauce();
+			cheese = ingredientFactory.createCheese();
+			toppings.addAll(Arrays.asList(ingredientFactory.createVeggies()));
+		}
 	}
 }

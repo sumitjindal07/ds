@@ -12,12 +12,15 @@ public class PizzaFactoryMain {
 		Pizza pizza = nyStore.orderPizza("cheese");
 		System.out.println("C1 ordered a "+pizza.getName()+" with price="+pizza.getCost());
 		
+		System.out.println("---------------------------------------------");
 		pizza = lnStore.orderPizza("veggie");
 		System.out.println("C2 ordered a "+pizza.getName()+" with price="+pizza.getCost());
 		
+		System.out.println("---------------------------------------------");
 		pizza = lnStore.orderPizza("classic");
 		System.out.println("C3 ordered a "+pizza.getName()+" with price="+pizza.getCost());
 		
+		System.out.println("---------------------------------------------");
 		pizza = indianStore.orderPizza("veggie");
 		System.out.println("C4 ordered a "+pizza.getName()+" with price="+pizza.getCost());
 	}

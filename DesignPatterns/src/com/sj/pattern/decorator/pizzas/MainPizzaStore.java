@@ -20,6 +20,7 @@ public class MainPizzaStore {
 
 	private static void createPizza(Pizza pizza) {
 		System.out.println(pizza.name +" - "+ pizza.description);
+		pizza.prepare();
 		pizza.bake();
 		pizza.cut();
 		pizza.box();

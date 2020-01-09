@@ -1,12 +1,11 @@
 package com.sj.pattern.decorator.pizzas;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.sj.pattern.factory.pizzas.ingredients.LNPizzaIngredientFactory;
 
 public class LNStylePizza extends DecoratorPizza {
 	
 	public LNStylePizza(Pizza pizza) {
-		super(pizza);
+		super(pizza, new LNPizzaIngredientFactory());
 	}
 
 	@Override
@@ -34,27 +33,5 @@ public class LNStylePizza extends DecoratorPizza {
 	@Override
 	public void setName(String name) {
 		this.name = "LN style " + name;
-	}
-
-	@Override
-	public void setDough(String dough) {
-		this.dough = "Extra Thick crust dough";
-	}
-
-	@Override
-	public void setSauce(String sauce) {
-		this.sauce = "Plum tomato Sauce";
-	}
-
-	@Override
-	public void setToppings(List<String> toppings) {
-
-		if(toppings==null || toppings.isEmpty())
-			return;
-		
-		this.toppings = new ArrayList<>(toppings.size());
-		for(String topping:toppings) {
-			this.toppings.add("LN style "+topping);
-		}
 	}
 }

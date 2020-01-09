@@ -1,28 +1,48 @@
 package com.sj.pattern.decorator.pizzas;
 
-import java.util.List;
+import java.util.Arrays;
+
+import com.sj.pattern.factory.pizzas.ingredients.PizzaIngredientFactory;
 
 public abstract class DecoratorPizza extends Pizza {
 
 	protected Pizza pizza;
+	protected PizzaIngredientFactory ingredientFactory;
 	
-	public DecoratorPizza(Pizza pizza) {
+	public DecoratorPizza(Pizza pizza, PizzaIngredientFactory ingredientFactory) {
 		this.pizza = pizza;
+		this.ingredientFactory = ingredientFactory;
 		setCost(pizza.cost);
 		setName(pizza.name);
-		setDough(pizza.dough);
-		setSauce(pizza.sauce);
-		setDescription(pizza.description);
-		setToppings(pizza.toppings);
+		setDescription();
 	}
 	
 	protected abstract void setCost(int cost);
 	abstract void setName(String name);
-	abstract void setDough(String dough);
-	abstract void setSauce(String sauce);
-	abstract void setToppings(List<String> toppings);
-	
-	protected void setDescription(String description) {
+	protected void setDescription() {
 		this.description = "This is a "+name+".";
+	}
+	
+	protected void setDough() {
+		pizza.dough = ingredientFactory.createDough();
+		this.dough = pizza.dough;
+		
+	}
+
+	protected void setSauce() {
+		pizza.sauce = ingredientFactory.createSauce();
+		this.sauce = pizza.sauce;
+	}
+
+	protected void setToppings() {
+		pizza.toppings = Arrays.asList(ingredientFactory.createVeggies());
+		this.toppings = pizza.toppings;
+	}
+	
+	@Override
+	protected void prepareIngredients() {
+		setDough();
+		setSauce();
+		setToppings();
 	}
 }

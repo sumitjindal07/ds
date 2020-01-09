@@ -1,12 +1,11 @@
 package com.sj.pattern.decorator.pizzas;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.sj.pattern.factory.pizzas.ingredients.NYPizzaIngredientFactory;
 
 public class NYStylePizza extends DecoratorPizza {
 	
 	public NYStylePizza(Pizza pizza) {
-		super(pizza);
+		super(pizza, new NYPizzaIngredientFactory());
 	}
 
 	@Override
@@ -32,27 +31,5 @@ public class NYStylePizza extends DecoratorPizza {
 	@Override
 	public void setName(String name) {
 		this.name = "NY style " + name;
-	}
-
-	@Override
-	public void setDough(String dough) {
-		this.dough = "Thin crust dough";
-	}
-
-	@Override
-	public void setSauce(String sauce) {
-		this.sauce = "Marinara Sauce";
-	}
-
-	@Override
-	public void setToppings(List<String> toppings) {
-
-		if(toppings==null || toppings.isEmpty())
-			return;
-		
-		this.toppings = new ArrayList<>(toppings.size());
-		for(String topping:toppings) {
-			this.toppings.add("NY style "+topping);
-		}
 	}
 }
