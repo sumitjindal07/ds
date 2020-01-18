@@ -1,6 +1,10 @@
 package com.sj.pattern.singleton;
 
-public class Singleton {
+import java.io.Serializable;
+
+public class Singleton implements Serializable {
+
+	private static final long serialVersionUID = 4415040962367413861L;
 
 	private volatile static Singleton instance = null;
 	
