@@ -17,6 +17,12 @@ public class Singleton implements Serializable {
 		}
 	}
 	
+	protected Object readResolve() {
+		if(instance == null)
+			instance = this; //when in diff. JVM
+		return instance;
+	}
+	
 	public static Singleton getInstance() {
 		if(instance == null) {
 			synchronized (Singleton.class) {
