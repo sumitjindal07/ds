@@ -2,8 +2,8 @@ package com.sj.pattern.command.vendors;
 
 public class CeilingFan {
 	
-	enum STATE {ON, OFF;};
-	enum SPEED {LOW, MEDIUM, HIGH;};
+	public enum STATE {ON, OFF;};
+	public enum SPEED {LOW, MEDIUM, HIGH;};
 	
 	private STATE currentState = STATE.OFF;
 	private SPEED currentSpeed = null;
@@ -22,6 +22,9 @@ public class CeilingFan {
 	
 	public STATE getCurrentState() {
 		return currentState;
+	}
+	public SPEED getCurrentSpeed() {
+		return currentSpeed;
 	}
 	
 	public void increaseSpeed() {

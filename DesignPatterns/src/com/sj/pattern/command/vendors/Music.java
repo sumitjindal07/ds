@@ -3,7 +3,7 @@ package com.sj.pattern.command.vendors;
 public class Music {
 	
 	private int volume = 3;
-	enum STATE {ON, OFF;};
+	public enum STATE {ON, OFF;};
 	private STATE currentState = STATE.OFF;
 	
 	public void on() {
