@@ -9,7 +9,7 @@ public class CeilingFanCommandImpl implements ICommand {
 	private CeilingFan fan;
 	
 	enum STATE {ON, OFF;};
-	private STATE currentState = STATE.OFF;
+	private STATE currentState = null;
 	
 	public CeilingFanCommandImpl() {
 		fan = new CeilingFan();
@@ -46,6 +46,8 @@ public class CeilingFanCommandImpl implements ICommand {
 
 	@Override
 	public boolean undo() {
+		if(currentState==null)
+			return false;
 		switch(currentState) {
 		case OFF:
 			return executeOn();

@@ -12,11 +12,11 @@ public class LightCommandImpl implements ICommand {
 	}
 	
 	enum STATE {ON, OFF;};
-	private STATE currentState = STATE.OFF;
+	private STATE currentState = null;
 	
 	@Override
 	public boolean executeOn() {
-		if(currentState==STATE.OFF) {
+		if(currentState==null || currentState==STATE.OFF) {
 			light.on();
 			currentState = STATE.ON;
 			return true;
@@ -36,6 +36,8 @@ public class LightCommandImpl implements ICommand {
 
 	@Override
 	public boolean undo() {
+		if(currentState==null)
+			return false;
 		switch(currentState) {
 		case OFF:
 			return executeOn();

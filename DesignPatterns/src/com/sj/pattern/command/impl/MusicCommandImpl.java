@@ -12,7 +12,7 @@ public class MusicCommandImpl implements ICommand {
 	}
 	
 	enum STATE {ON, OFF, VOLUME;};
-	private STATE currentState = STATE.OFF;
+	private STATE currentState = null;
 	
 	@Override
 	public boolean executeOn() {
@@ -31,9 +31,8 @@ public class MusicCommandImpl implements ICommand {
 
 	@Override
 	public boolean executeOff() {
-		switch(currentState) {
+		switch(music.getCurrentState()) {
 		case ON:
-		case VOLUME:
 			currentState = STATE.OFF;
 			music.off();
 			return true;
@@ -45,6 +44,8 @@ public class MusicCommandImpl implements ICommand {
 
 	@Override
 	public boolean undo() {
+		if(currentState==null)
+			return false;
 		switch(currentState) {
 		case OFF:
 			return executeOn();
