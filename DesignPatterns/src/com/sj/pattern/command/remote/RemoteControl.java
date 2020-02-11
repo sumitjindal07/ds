@@ -71,7 +71,8 @@ public class RemoteControl {
 		//Though Undo button is not at slot level, 
 		//here undo means to undo the button pressed for this slot
 		public void undoForButtonPressed() {
-			command.undo();
+			if(command.undo())
+				currentSlot = null;
 		}
 	}
 }
