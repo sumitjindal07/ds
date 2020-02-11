@@ -11,8 +11,8 @@ public class CeilingFanCommandImpl implements ICommand {
 	enum STATE {ON, OFF;};
 	private STATE currentState = null;
 	
-	public CeilingFanCommandImpl() {
-		fan = new CeilingFan();
+	public CeilingFanCommandImpl(CeilingFan fan) {
+		this.fan = fan;
 	}
 	
 	@Override

@@ -7,8 +7,8 @@ public class MusicCommandImpl implements ICommand {
 	
 	private Music music;
 	
-	public MusicCommandImpl() {
-		music = new Music();
+	public MusicCommandImpl(Music music) {
+		this.music = music;
 	}
 	
 	enum STATE {ON, OFF, VOLUME;};

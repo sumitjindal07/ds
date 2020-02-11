@@ -7,8 +7,8 @@ public class LightCommandImpl implements ICommand {
 	
 	private Light light;
 	
-	public LightCommandImpl(String type) {
-		light = new Light(type);
+	public LightCommandImpl(Light light) {
+		this.light = light;
 	}
 	
 	enum STATE {ON, OFF;};
