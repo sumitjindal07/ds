@@ -1,5 +1,7 @@
 package com.sj.pattern.command.remote;
 
+import java.util.Arrays;
+
 import com.sj.pattern.command.ICommand;
 
 /**
@@ -32,7 +34,6 @@ public class RemoteControl {
 			throw new IllegalArgumentException("Please pass slot number between 1 to "+slotSize);
 		
 		slots[slotIndex].onButtonPressed();
-				
 	}
 	
 	public void actionForSlotOFF(int slotIndex) {
@@ -48,7 +49,8 @@ public class RemoteControl {
 	}
 	
 	public void actionForReset() {
-		
+		Arrays.asList(slots).forEach(slot->slot.resetSlot());
+		currentSlot = null;
 	}
 	
 	private class Slot {
@@ -58,6 +60,10 @@ public class RemoteControl {
 			this.command = command;
 		}
 		
+		public void resetSlot() {
+			while(command.executeOff());
+		}
+
 		public void onButtonPressed() {
 			if(command.executeOn())
 				currentSlot = this;
