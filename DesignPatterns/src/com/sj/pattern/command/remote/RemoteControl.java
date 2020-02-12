@@ -22,25 +22,25 @@ public class RemoteControl {
 		currentSlot = null;
 	}
 	
-	public void setSlot(int slotIndex, ICommand command) {
+	protected void setSlot(int slotIndex, ICommand command) {
 		if(slotIndex>slotSize || slotIndex<=0 || command==null)
 			throw new IllegalArgumentException("Please pass slot number between 1 to "+slotSize);
 		
-		slots[slotIndex] = new Slot(command);
+		slots[slotIndex-1] = new Slot(command);
 	}
 	
 	public void actionForSlotON(int slotIndex) {
 		if(slotIndex>slotSize || slotIndex<=0)
 			throw new IllegalArgumentException("Please pass slot number between 1 to "+slotSize);
 		
-		slots[slotIndex].onButtonPressed();
+		slots[slotIndex-1].onButtonPressed();
 	}
 	
 	public void actionForSlotOFF(int slotIndex) {
 		if(slotIndex>slotSize || slotIndex<=0)
 			throw new IllegalArgumentException("Please pass slot number between 1 to "+slotSize);
 		
-		slots[slotIndex].offButtonPressed();
+		slots[slotIndex-1].offButtonPressed();
 	}
 	
 	public void actionForUndo() {
