@@ -16,4 +16,8 @@ public class Light {
 		System.out.println(type+" Light is off");
 	}
 
+	@Override
+	public String toString() {
+		return type+" Light";
+	}
 }

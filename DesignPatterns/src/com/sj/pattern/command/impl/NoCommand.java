@@ -19,4 +19,8 @@ public class NoCommand implements ICommand {
 		return false;
 	}
 
+	@Override
+	public String toString() {
+		return "[No Command]";
+	}
 }

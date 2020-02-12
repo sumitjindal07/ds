@@ -64,4 +64,9 @@ public class CeilingFan {
 				System.out.println("CeilingFan speed is set to "+currentSpeed);
 		}
 	}
+	
+	@Override
+	public String toString() {
+		return "CeilingFan at state "+currentState+((currentState==STATE.ON)?" and at speed "+currentSpeed:"");
+	}
 }

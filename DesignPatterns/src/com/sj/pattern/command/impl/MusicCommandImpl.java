@@ -57,4 +57,8 @@ public class MusicCommandImpl implements ICommand {
 		return false;
 	}
 
+	@Override
+	public String toString() {
+		return "["+music.toString()+"]"+" Buttons [ON/VOLUME] and [OFF]";
+	}
 }

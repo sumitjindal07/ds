@@ -26,5 +26,10 @@ public class Music {
 			volume=1;
 		System.out.println("Music volume is set to "+volume);
 	}
+	
+	@Override
+	public String toString() {
+		return "Music at state "+currentState+((currentState==STATE.ON)?" and at volume "+volume:"");
+	}
 
 }

@@ -46,5 +46,9 @@ public class LightCommandImpl implements ICommand {
 		}
 		return false;
 	}
-
+	
+	@Override
+	public String toString() {
+		return "["+light.toString()+" with state "+currentState+"]"+" Buttons [ON] and [OFF]";
+	}
 }
