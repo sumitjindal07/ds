@@ -1,6 +1,7 @@
 package com.sj.pattern.command.remote;
 
 import java.util.Arrays;
+import java.util.Stack;
 import java.util.stream.IntStream;
 
 import com.sj.pattern.command.ICommand;
@@ -15,12 +16,12 @@ public class RemoteControl {
 	
 	private int slotSize;
 	private Slot[] slots;
-	private Slot currentSlot;
+	private Stack<Slot> currentSlots;
 	
 	public RemoteControl(int slotSize) {
 		this.slotSize = slotSize;
 		slots = new Slot[slotSize];
-		currentSlot = null;
+		currentSlots = new Stack<>();
 	}
 	
 	protected void setSlot(int slotIndex, ICommand command) {
@@ -45,13 +46,16 @@ public class RemoteControl {
 	}
 	
 	public void actionForUndo() {
-		if(currentSlot!=null)
-			currentSlot.undoForButtonPressed();
+		if(!currentSlots.isEmpty()) {
+			currentSlots.peek().undoForButtonPressed();
+		} else {
+			System.out.println("Nothing to undo");
+		}
 	}
 	
 	public void actionForReset() {
 		Arrays.asList(slots).forEach(slot->slot.resetSlot());
-		currentSlot = null;
+		currentSlots.clear();
 	}
 	
 	@Override
@@ -80,19 +84,19 @@ public class RemoteControl {
 
 		public void onButtonPressed() {
 			if(command.executeOn())
-				currentSlot = this;
+				currentSlots.push(this);
 		}
 		
 		public void offButtonPressed() {
 			if(command.executeOff())
-				currentSlot = this;
+				currentSlots.push(this);
 		}
 		
 		//Though Undo button is not at slot level, 
 		//here undo means to undo the button pressed for this slot
 		public void undoForButtonPressed() {
 			if(command.undo())
-				currentSlot = null;
+				currentSlots.pop();
 		}
 		
 		@Override
