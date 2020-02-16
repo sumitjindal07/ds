@@ -52,13 +52,20 @@ public class MusicCommandImpl implements ICommand {
 		case ON:
 			return executeOff();
 		case VOLUME:
-			break;
+			System.out.println("Cannot undo volume change!!");
+			return true;
+			
 		}
 		return false;
 	}
 
 	@Override
 	public String toString() {
-		return "["+music.toString()+"]"+" Buttons [ON/VOLUME] and [OFF]";
+		return toStringSimple()+" Buttons [ON/VOLUME] and [OFF]";
+	}
+	
+	@Override
+	public String toStringSimple() {
+		return "["+music.toString()+"]";
 	}
 }

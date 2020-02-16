@@ -39,7 +39,7 @@ public class RemoteLoader {
 		}
 		remote.setSlot(currentSlotNumber+1, command);
 		currentSlotNumber++;
-		System.out.println("Added "+command.getClass().getName()+" at slot number "+currentSlotNumber);
+		System.out.println("Added "+command.toStringSimple()+" at slot number "+currentSlotNumber);
 		return true;
 	}
 	

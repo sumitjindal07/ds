@@ -1,6 +1,7 @@
 package com.sj.pattern.command.remote;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 import com.sj.pattern.command.ICommand;
 
@@ -53,6 +54,19 @@ public class RemoteControl {
 		currentSlot = null;
 	}
 	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder("Remote details: "+slotSize+" slots and a reset and an undo button!!");
+		sb.append("\npress slot number followed by n for ON button and f for OFF button!!\n");
+		IntStream.range(0, slotSize).
+			mapToObj(i -> String.format("%d. %s\n", (i+1), slots[i].toString())).
+			forEach(sb::append);
+		
+		sb.append(String.format("%d. Undo\n%d. Reset\n", slotSize+1, slotSize+2));
+		
+		return sb.toString();
+	}
+	
 	private class Slot {
 		private ICommand command;
 
@@ -79,6 +93,11 @@ public class RemoteControl {
 		public void undoForButtonPressed() {
 			if(command.undo())
 				currentSlot = null;
+		}
+		
+		@Override
+		public String toString() {
+			return command.toString();
 		}
 	}
 }

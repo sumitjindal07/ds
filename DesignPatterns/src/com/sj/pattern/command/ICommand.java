@@ -4,4 +4,5 @@ public interface ICommand {
 	public boolean executeOn();
 	public boolean executeOff();
 	public boolean undo();
+	public String toStringSimple();
 }

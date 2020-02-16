@@ -59,7 +59,11 @@ public class CeilingFanCommandImpl implements ICommand {
 	
 	@Override
 	public String toString() {
-		return "["+fan.toString()+"]"+" Buttons [ON/IncreaseSpeed] and [OFF/DecreaseSpeed]";
+		return toStringSimple()+" Buttons [ON/IncreaseSpeed] and [OFF/DecreaseSpeed]";
 	}
 
+	@Override
+	public String toStringSimple() {
+		return "["+fan.toString()+"]";
+	}
 }
